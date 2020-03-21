@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="apple-mobile-web-app-title" content="Stocks">
+<title>CodePen - The Stocks</title>
+<style>
+* {
+  font-family: "Comic Sans MS"
+}
+
+body {
+  background-color: #f59e42;
+  background:
+linear-gradient(63deg, #f59e42 23%, transparent 23%) 7px 0,
+linear-gradient(63deg, transparent 74%, #f59e42 78%),
+linear-gradient(63deg, transparent 34%, #f59e42 38%, #f59e42 58%, transparent 62%),
+#d18f1d;
+background-size: 16px 48px;
+  text-align: center;
+}
+
+.title {
+  
+  font-size: 20vmin;
+}
+
+.subtitle {}
+
+#up {
+  font-weight: 1000;
+  background-color: Green;
+}
+
+#down {
+  font-weight: 1000;
+  background-color: Red;
+}
+
+button {
+  
+}
+</style>
+</head>
+<body translate="no">
+<div class="title">Stocks market</div>
+<marquee id="scroll" behavior=alternate class="subtitle">
+The Stocks are currently
+<span id="up">Up</span>
+<span id="down">Down<span>
+</marquee>
+<button>Invest</button>
+<script id="rendered-js">
+let up = document.getElementById("up");
+let down = document.getElementById("down");
+let scroll = document.getElementById("scroll");
+
+function toggleUp() {
+  if (up.style.display === "none") {
+    up.style.display = "inline";
+  } else {
+    up.style.display = "none";
+  }
+}
+
+function toggleDown() {
+  if (down.style.display === "none") {
+    down.style.display = "inline";
+  } else {
+    down.style.display = "none";
+  }
+}
+
+function toggleAll() {
+  toggleUp();
+  toggleDown();
+}
+
+toggleUp();
+
+// scroll.onbounce = function() {
+//   toggleUp();
+//   toggleDown();
+// }
+
+function toggleDelay() {
+  toggleUp();
+  toggleDown();
+  setTimeout(toggleDelay, Math.random()*7000);
+}
+
+toggleDelay();
+    </script>
+</body>
+</html>
