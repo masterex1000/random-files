@@ -3,8 +3,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="apple-mobile-web-app-title" content="Stocks">
-<title>CodePen - The Stocks</title>
+<meta name="apple-mobile-web-app-title" content="The stocks">
+<title>The Stocks</title>
 <style>
 * {
   font-family: "Comic Sans MS"
@@ -50,11 +50,14 @@ The Stocks are currently
 <span id="up">Up</span>
 <span id="down">Down<span>
 </marquee>
-<button>Invest</button>
+<div>You have $<span id="total">100</span></div>
+<button onclick="invest()">Invest</button>
 <script id="rendered-js">
 let up = document.getElementById("up");
 let down = document.getElementById("down");
 let scroll = document.getElementById("scroll");
+let total = document.getElementById("total");
+let money = 100;
 
 function toggleUp() {
   if (up.style.display === "none") {
@@ -70,6 +73,10 @@ function toggleDown() {
   } else {
     down.style.display = "none";
   }
+}
+
+function updateTotal() {
+  total.innerHTML = money;
 }
 
 function toggleAll() {
@@ -88,6 +95,16 @@ function toggleDelay() {
   toggleUp();
   toggleDown();
   setTimeout(toggleDelay, Math.random()*7000);
+}
+
+function invest() {
+  console.log("asdf")
+  if (down.style.display === "none") {
+    money += Math.random() * 1000;
+  } else {
+    money -= Math.random() * 1000;
+  }
+  updateTotal();
 }
 
 toggleDelay();
